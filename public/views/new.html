@@ -1,0 +1,25 @@
+<h2 class="h2">New Contact</h2>
+
+<form class="form-horizontal" name="newContact" novalidate>
+
+	<!-- First Name & Last Name (required fields) -->
+	<form-field record="contact" field="firstName" live="false" required="true"></form-field>
+	<form-field record="contact" field="lastName" live="false" required="true"></form-field>
+
+	<!-- Loop through all other fields -->
+	<form-field
+		ng-repeat="(key,value) in contact | keyFilter: 'firstName' | keyFilter: 'lastName'"
+		live="false"
+		record="contact"
+		field="{{key}}"></form-field>
+
+	<!-- Add a new field -->
+	<new-field record="contact" live="false"></new-field>
+
+	<div class="row form-group">
+		<div class="col-sm-offset-2">
+			<button class="btn btn-primary" ng-click="save()">Create Contact</button>
+		</div>
+	</div>
+
+</form>
